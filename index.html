@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mondrian Style Composition (Inline)</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; 
+            height: 100vh;
+            margin: 0;
+        }
+
+        .composition {
+            /* Sets the overall size and grid structure */
+            width: 600px; /* Adjust as needed */
+            height: 600px; /* Adjust as needed */
+            display: grid;
+            /* Defines the grid: 2 columns and 2 rows */
+            grid-template-columns: 40% 60%;
+            grid-template-rows: 40% 60%;
+            border: 5px solid black; /* Outer border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        /* Base style for all blocks */
+        .block {
+            border: 3px solid black;
+            box-sizing: border-box; /* Includes border in size */
+            background-color: white; /* Default background */
+        }
+
+        /* --- Main Grid Blocks --- */
+        .red {
+            background-color: #e3051b; /* Mondrian Red */
+        }
+
+        /* --- White Bottom Right Container (for nested elements) --- */
+        .white-bottom-right {
+            display: flex;
+            position: relative; /* Needed for the absolute-positioned blue block */
+        }
+
+        /* --- Inner Blocks in the Bottom-Right Block --- */
+        .yellow {
+            background-color: #fce81e; /* Mondrian Yellow */
+            border: 3px solid black;
+            box-sizing: border-box;
+            width: 60%; 
+            height: 15%; 
+            margin-top: auto; /* Push block to the bottom */
+            margin-right: 5%; 
+            margin-bottom: 5%;
+            align-self: flex-end; /* Align to the right side of the flex container */
+        }
+
+        .blue {
+            background-color: #034ea2; /* Mondrian Blue */
+            border: 3px solid black;
+            box-sizing: border-box;
+            width: 15%; /* Very narrow */
+            height: 30%; /* Taller than yellow */
+            position: absolute; 
+            bottom: 3px; /* Start right above the main black border */
+            right: 3px; /* Start right inside the main black border */
+        }
+    </style>
+</head>
+<body>
+    <div class="composition">
+        <div class="block red"></div>
+        <div class="block white-top-right"></div>
+        <div class="block white-bottom-left"></div>
+        <div class="block white-bottom-right">
+            <div class="yellow"></div>
+            <div class="blue"></div>
+        </div>
+    </div>
+</body>
+</html>
